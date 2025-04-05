@@ -1,16 +1,14 @@
 import 'package:book_app/constatnts.dart';
 import 'package:book_app/core/utils/styles.dart';
-import 'package:book_app/features/BookMark/presentation/manager/book_marked/book_marked_cubit.dart';
+import 'package:book_app/features/BookMark/data/model/bookModel_marked.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 
 class BookMarkItem extends StatelessWidget {
   const BookMarkItem({
-    super.key, required this.image, required this.title, required this.authors, required this.category, required this.index,
+    super.key, required this.bookMarked, 
   });
-final String image,title,authors,category;
-final int index;
+final BookModelMarked bookMarked; 
   @override
   Widget build(BuildContext context) {
     return
@@ -30,7 +28,7 @@ final int index;
               child: CachedNetworkImage(
                 imageUrl: 
                 // 'https://m.media-amazon.com/images/I/51dOacmuzvL._SY445_SX342_.jpg',
-                image,
+                bookMarked.image,
                 fit: BoxFit.cover,
                 placeholder: (context, url) => const Center(
                   child: CircularProgressIndicator(
@@ -40,13 +38,13 @@ final int index;
                 errorWidget: (context, url, error) => Center(
                     child: Text(
                   'Not Found !',
-                  style: Styles.textStyle16
+                  style: Styles.textStyle14
                       .copyWith(color: Colors.black, fontSize: 10),
                 )),
               )),
           title: Text(
             // 'Harry Potter Azkaban',
-            title,
+            bookMarked.title,
             style: Styles.textStyle18.copyWith(
               fontFamily: kGetSectraFont,
             ),
@@ -55,7 +53,7 @@ final int index;
           ),
            trailing: IconButton(
             onPressed: () {
-BlocProvider.of<BookMarkedCubit>(context).bookMarked(isPressed: false,index: index,marked: null);
+bookMarked.delete();
               
             },
             icon: Icon(
@@ -70,16 +68,16 @@ BlocProvider.of<BookMarkedCubit>(context).bookMarked(isPressed: false,index: ind
               ),
               Text(
                 //'Mohamed Samy',
-               authors,
-                  style: Styles.textStyle16
+               bookMarked.authors,
+                  style: Styles.textStyle14
                       .copyWith(color: const Color(0xff707070))),
               const SizedBox(
                 height: 2,
               ),
               Text(
                // 'Fantasy',
-               category,
-                style: Styles.textStyle16,
+               bookMarked.category,
+                style: Styles.textStyle14,
                 maxLines: 1,
                 overflow: TextOverflow.ellipsis,
               ),

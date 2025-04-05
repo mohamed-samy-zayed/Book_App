@@ -18,7 +18,7 @@ class Item extends StatelessWidget {
           fit: BoxFit.cover,
          
           colorBlendMode: BlendMode.clear,
-          errorWidget: (context, url, error) => Center(child:  Text('Not Found !',style: Styles.textStyle16.copyWith(color: Colors.black),textAlign: TextAlign.center,)),
+          errorWidget: (context, url, error) => Center(child:  Text('Not Found !',style: Styles.textStyle14.copyWith(color: Colors.black),textAlign: TextAlign.center,)),
           placeholder: (context, url) => const Center(
             child: CircularProgressIndicator(
               color: Colors.grey,

@@ -38,7 +38,7 @@ class SearchViewBody extends StatelessWidget {
                             left: 15, top: 20, bottom: 20),
                         child: Text(
                           'Result of " ${state.q} "',
-                          style: Styles.textStyle16,
+                          style: Styles.textStyle14,
                         ),
                       );
                     } else {
@@ -72,7 +72,7 @@ class SearchViewBody extends StatelessWidget {
               return SliverToBoxAdapter(
                   child: Text(
                 'No Results of " ${state.q} "!',
-                style: Styles.textStyle16,
+                style: Styles.textStyle14,
                 textAlign: TextAlign.center,
               ));
             } else {

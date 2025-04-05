@@ -42,7 +42,7 @@ class SearchItem extends StatelessWidget {
                 errorWidget: (context, url, error) => Center(
                     child: Text(
                   'Not Found !',
-                  style: Styles.textStyle16
+                  style: Styles.textStyle14
                       .copyWith(color: Colors.black, fontSize: 10),
                 )),
               )),
@@ -61,14 +61,14 @@ class SearchItem extends StatelessWidget {
                 height: 3,
               ),
               Text(getAuthor(bookModel: bookModel)  ,
-                  style: Styles.textStyle16
+                  style: Styles.textStyle14
                       .copyWith(color: const Color(0xff707070))),
               const SizedBox(
                 height: 2,
               ),
               Text(
                 bookModel.volumeInfo!.categories?[0] ?? 'None',
-                style: Styles.textStyle16,
+                style: Styles.textStyle14,
                 maxLines: 1,
                 overflow: TextOverflow.ellipsis,
               ),

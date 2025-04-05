@@ -25,7 +25,7 @@ class HomepageBody extends StatelessWidget {
                 ),
                 CustomListviewHorizontal(),
                 SizedBox(
-                  height: 50,
+                  height: 30,
                 ),
                 Text(
                   'Most Popular ',

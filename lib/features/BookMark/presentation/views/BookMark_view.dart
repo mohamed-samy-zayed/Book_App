@@ -8,9 +8,9 @@ class BookmarkView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return const Scaffold(
-      bottomNavigationBar: CustomNavigator(
-        index: 1,
-      ),
-      body: BookmarkBody());
+        bottomNavigationBar: CustomNavigator(
+          index: 1,
+        ),
+        body: BookmarkBody());
   }
 }

@@ -6,8 +6,9 @@ import 'package:book_app/features/home/presentation/views/widgets/detailSimilar_
 import 'package:flutter/material.dart';
 
 class DetailsViewBody extends StatelessWidget {
-  const DetailsViewBody({super.key, required this.bookModel});
+  const DetailsViewBody({super.key, required this.bookModel, required this.index});
   final BookModel bookModel;
+  final int index;
   @override
   Widget build(BuildContext context) {
     return CustomScrollView(
@@ -19,6 +20,7 @@ class DetailsViewBody extends StatelessWidget {
               children: [
                 CustomDeatailsappbar(
                   bookModel: bookModel,
+                  index:index,
                 ),
                 BooksDetailSection(
                   bookModel: bookModel,

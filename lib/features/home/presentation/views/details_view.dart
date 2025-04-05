@@ -5,9 +5,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class DetailsView extends StatefulWidget {
-  const DetailsView({super.key, required this.bookModel});
+  const DetailsView({super.key, required this.bookModel, required this.index});
 static String id  = 'DetailsView';
 final BookModel bookModel;
+final int index;
 
 
 
@@ -28,6 +29,7 @@ class _DetailsViewState extends State<DetailsView> {
     return  Scaffold(
       body: SafeArea(child: DetailsViewBody(
         bookModel: widget.bookModel,
+        index:widget.index,
       )),
     );
   }

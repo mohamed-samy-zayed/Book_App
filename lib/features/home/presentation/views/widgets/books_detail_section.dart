@@ -78,7 +78,7 @@ class BooksDetailSection extends StatelessWidget {
             ),
             Text(
               bookModel.volumeInfo!.description!,
-              style: Styles.textStyle16.copyWith(
+              style: Styles.textStyle14.copyWith(
                 fontSize: 14,
                 fontWeight: FontWeight.w200,
               ),

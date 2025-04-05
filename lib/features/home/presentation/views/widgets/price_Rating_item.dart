@@ -2,12 +2,14 @@ import 'package:book_app/core/utils/styles.dart';
 import 'package:flutter/material.dart';
 
 class PriceRatingItem extends StatelessWidget {
-  const PriceRatingItem( {
+  const PriceRatingItem({
     super.key,
-    this.mainAxisAlignment = MainAxisAlignment.start, required this.rating, required this.count,
+    this.mainAxisAlignment = MainAxisAlignment.start,
+    required this.rating,
+    required this.count,
   });
   final MainAxisAlignment mainAxisAlignment;
-  final double rating ;
+  final double rating;
   final int count;
   @override
   Widget build(BuildContext context) {
@@ -22,7 +24,7 @@ class PriceRatingItem extends StatelessWidget {
         const SizedBox(
           width: 6.3,
         ),
-         Text(
+        Text(
           rating.toString(),
           style: Styles.textStyle18,
         ),
@@ -31,7 +33,7 @@ class PriceRatingItem extends StatelessWidget {
         ),
         Text(
           '($count)',
-          style: Styles.textStyle16.copyWith(color: const Color(0xff707070)),
+          style: Styles.textStyle14.copyWith(color: const Color(0xff707070)),
         )
       ],
     );

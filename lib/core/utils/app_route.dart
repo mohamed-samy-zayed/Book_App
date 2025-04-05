@@ -1,6 +1,5 @@
 import 'package:book_app/core/utils/service_locator.dart';
 import 'package:book_app/features/BookMark/presentation/views/BookMark_view.dart';
-import 'package:book_app/features/home/data/models/book_model/book_model.dart';
 import 'package:book_app/features/home/data/repos/home_repo_imple.dart';
 import 'package:book_app/features/home/presentation/manager/similar_books/similarbooks_cubit.dart';
 import 'package:book_app/features/home/presentation/views/details_view.dart';
@@ -27,12 +26,17 @@ abstract class AppRoute {
     ),
     GoRoute(
       path: kDetailPath,
-      builder: (context, state) => BlocProvider(
+      builder: (context, state) {
+  final extra =  state.extra as Map<String, dynamic>;
+return BlocProvider(
         create: (context) => SimilarbooksCubit(getIt.get<HomeRepoImple>()),
         child:DetailsView(
-          bookModel: state.extra as BookModel,
+          bookModel: extra['bookModel'],
+          index: extra['index'],
         ),
-      ),
+      );
+
+      } 
     ),
     GoRoute(
       path: kSearchPath,

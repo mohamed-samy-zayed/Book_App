@@ -23,7 +23,7 @@ class _SearchTextfieldState extends State<SearchTextfield> {
       onSubmitted: widget.onSubmited,
       showCursor: true,
       cursorColor: Colors.white,
-      style: Styles.textStyle16.copyWith(
+      style: Styles.textStyle14.copyWith(
         fontWeight: FontWeight.w600,
         color: Colors.white,
       ),
@@ -62,9 +62,9 @@ class _SearchTextfieldState extends State<SearchTextfield> {
             borderRadius: BorderRadius.circular(20),
             borderSide: BorderSide(color: kContainerColor)),
         hintText: "Search...",
-        hintStyle: Styles.textStyle16
+        hintStyle: Styles.textStyle14
             .copyWith(fontWeight: FontWeight.w600, color: Colors.white),
-        errorStyle: Styles.textStyle16.copyWith(
+        errorStyle: Styles.textStyle14.copyWith(
           fontWeight: FontWeight.w600,
         ),
       ),

@@ -21,7 +21,7 @@ class CustomListviewHorizontal extends StatelessWidget {
         }
         if (state is FeaturedbooksSuccess) {
           return SizedBox(
-            height: MediaQuery.of(context).size.height * .25,
+            height: MediaQuery.of(context).size.height * .21,
             child: ListView.builder(
               physics: const BouncingScrollPhysics(),
               itemCount: state.books.length,
@@ -31,11 +31,13 @@ class CustomListviewHorizontal extends StatelessWidget {
                   padding: const EdgeInsets.only(right: 15),
                   child: GestureDetector(
                       onTap: () {
-                        GoRouter.of(context).push(AppRoute.kDetailPath,extra: state.books[index]);
+                        GoRouter.of(context).push(AppRoute.kDetailPath,
+                            extra: state.books[index]);
                       },
                       child: Item(
-                        imageUrl: state
-                            .books[index].volumeInfo!.imageLinks!.thumbnail ?? 'Not Found!',
+                        imageUrl: state.books[index].volumeInfo!.imageLinks!
+                                .thumbnail ??
+                            'Not Found!',
                       )),
                 );
               },
