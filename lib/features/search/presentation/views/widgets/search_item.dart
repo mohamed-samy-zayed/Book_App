@@ -31,21 +31,24 @@ class SearchItem extends StatelessWidget {
                   aspectRatio: 2.5 / 4,
                   child: ClipRRect(
                     borderRadius: const BorderRadius.all(Radius.circular(10)),
-                    child: CachedNetworkImage(
-                        imageUrl:
-                            bookModel.volumeInfo!.imageLinks!.thumbnail ?? '',
-                        fit: BoxFit.cover,
-                        errorWidget: (context, url, error) => Center(
+                    child: 
+                  bookModel.volumeInfo!.imageLinks?.thumbnail == null
+                      ? const SizedBox()
+                      : CachedNetworkImage(
+                          imageUrl: bookModel.volumeInfo!.imageLinks!.thumbnail!,
+                          fit: BoxFit.cover,
+                          errorWidget: (context, url, error) => Center(
                                 child: Text(
-                              'Not Found !',
-                              style: Styles.textStyle14.copyWith(
-                                  color: Colors.black, fontSize: 10),
-                            )),
-                        placeholder: (context, url) => const Center(
-                              child: CircularProgressIndicator(
-                                color: Colors.grey,
+                                  'Not Found !',
+                                  style: Styles.textStyle14.copyWith(
+                                      color: Colors.black, fontSize: 10),
+                                ),
                               ),
-                            )),
+                          placeholder: (context, url) => const Center(
+                                child: CircularProgressIndicator(
+                                  color: Colors.grey,
+                                ),
+                              )),
                   ),
                 ),
                 const SizedBox(
