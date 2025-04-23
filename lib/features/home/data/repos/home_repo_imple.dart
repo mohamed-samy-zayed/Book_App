@@ -38,7 +38,7 @@ class HomeRepoImple implements HomeRepo {
     try {
       var data = await apiServices.get(
           endPoint:
-              'Filtering=free-ebooks&q=subject:fantasy&Sorting=relevance');
+              'Filtering=free-ebooks&q=subject:books&Sorting=relevance');
      
       List<dynamic> items = data['items'];
       
@@ -66,7 +66,7 @@ class HomeRepoImple implements HomeRepo {
       {required String category}) async {
     try {
       var data = await apiServices.get(
-          endPoint: 'Filtering=free-ebooks&q=subject:fantasy');
+          endPoint: 'Filtering=free-ebooks&q=subject:$category&Sorting=newest');
       List<dynamic> items = data['items'];
       List<BookModel> books = [];
 

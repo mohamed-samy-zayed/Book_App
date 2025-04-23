@@ -24,7 +24,19 @@ class BookMarkItem extends StatelessWidget {
                 aspectRatio: 2.5 / 4,
                 child: ClipRRect(
                   borderRadius: const BorderRadius.all(Radius.circular(10)),
-                  child: CachedNetworkImage(
+                  child: 
+                  bookMarked.image == 'Not Found!'
+                      ?  SizedBox(
+                        child: Center(
+                                child: Text(
+                                  'Not Found !',
+                                  style: Styles.textStyle14.copyWith(
+                                      color: Colors.black, fontSize: 10),
+                                ),
+                              ),
+                      )
+                      :
+                  CachedNetworkImage(
                     imageUrl: bookMarked.image,
                     fit: BoxFit.cover,
                     errorWidget:
@@ -48,6 +60,7 @@ class BookMarkItem extends StatelessWidget {
               Expanded(
                 child: Column(
                   mainAxisSize: MainAxisSize.min,
+                  mainAxisAlignment: MainAxisAlignment.center,
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     SizedBox(

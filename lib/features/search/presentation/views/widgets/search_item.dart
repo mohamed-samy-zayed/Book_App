@@ -33,8 +33,17 @@ class SearchItem extends StatelessWidget {
                     borderRadius: const BorderRadius.all(Radius.circular(10)),
                     child: 
                   bookModel.volumeInfo!.imageLinks?.thumbnail == null
-                      ? const SizedBox()
-                      : CachedNetworkImage(
+                      ?  SizedBox(
+                        child: Center(
+                                child: Text(
+                                  'Not Found !',
+                                  style: Styles.textStyle14.copyWith(
+                                      color: Colors.black, fontSize: 10),
+                                ),
+                              ),
+                      )
+                      :
+                      CachedNetworkImage(
                           imageUrl: bookModel.volumeInfo!.imageLinks!.thumbnail!,
                           fit: BoxFit.cover,
                           errorWidget: (context, url, error) => Center(
@@ -57,6 +66,7 @@ class SearchItem extends StatelessWidget {
                 Expanded(
                   child: Column(
                     mainAxisSize: MainAxisSize.min,
+                    mainAxisAlignment: MainAxisAlignment.center,
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       SizedBox(
@@ -89,9 +99,7 @@ class SearchItem extends StatelessWidget {
                           overflow: TextOverflow.ellipsis,
                         ),
                       ),
-                     const Spacer(
-                              flex: 1,
-                            ),
+                     
                       SizedBox(
                         width: MediaQuery.of(context).size.width * .5,
                         child: Row(

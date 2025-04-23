@@ -21,10 +21,10 @@ void main() async {
   await Hive.openBox<BookModelMarked>(kBookMarkedBox);
   setupServicesLocator();
   runApp(
-    // DevicePreview(
-    //   enabled: !kReleaseMode, builder: (context) =>
+   // DevicePreview(
+    //  enabled: !kReleaseMode, builder: (context) =>
     const MyApp(),
-    //  )
+     //)
   );
 }
 
@@ -52,9 +52,9 @@ class MyApp extends StatelessWidget {
       child: MaterialApp.router(
         routerConfig: AppRoute.router,
         debugShowCheckedModeBanner: false,
-        // useInheritedMediaQuery: true,
-        // locale: DevicePreview.locale(context),
-        // builder: DevicePreview.appBuilder,
+        //useInheritedMediaQuery: true,
+        //locale: DevicePreview.locale(context),
+       // builder: DevicePreview.appBuilder,
         title: 'Book App',
         darkTheme: ThemeData.dark(useMaterial3: false).copyWith(
           scaffoldBackgroundColor: kPrimarycolor,

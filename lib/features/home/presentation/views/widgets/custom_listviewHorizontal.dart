@@ -36,8 +36,8 @@ class CustomListviewHorizontal extends StatelessWidget {
                       },
                       child: Item(
                         imageUrl: state.books[index].volumeInfo!.imageLinks!
-                                .thumbnail ??
-                            'Not Found!',
+                                .thumbnail 
+                            ,
                       )),
                 );
               },

@@ -9,9 +9,7 @@ class HomeView extends StatelessWidget {
   Widget build(BuildContext context) {
     return const Scaffold(
       body: HomepageBody(),
-      // bottomNavigationBar: CustomNavigator(
-      //   index: 0,
-      // ),
+      
     );
   }
 }
