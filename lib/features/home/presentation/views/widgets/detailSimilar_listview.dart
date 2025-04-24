@@ -33,7 +33,7 @@ class DetailsimilarListview extends StatelessWidget {
                       },
                     child: Item(
                       imageUrl:
-                          state.books[index].volumeInfo!.imageLinks!.thumbnail!,
+                          state.books[index].volumeInfo!.imageLinks?.thumbnail,
                     ),
                   ),
                 );

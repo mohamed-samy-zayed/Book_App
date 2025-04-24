@@ -10,9 +10,7 @@ class BookmarkView extends StatelessWidget {
     return 
 
      const Scaffold(
-        // bottomNavigationBar: CustomNavigator(
-        //   index: 1,
-        // ),
+        
         body: BookmarkBody());
   }
 }

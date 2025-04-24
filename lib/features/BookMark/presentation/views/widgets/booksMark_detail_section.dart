@@ -1,15 +1,15 @@
 import 'package:book_app/constatnts.dart';
 import 'package:book_app/core/utils/styles.dart';
-import 'package:book_app/features/home/data/models/book_model/book_model.dart';
+import 'package:book_app/features/BookMark/data/model/bookModel_marked.dart';
+import 'package:book_app/features/BookMark/presentation/views/widgets/bookMarkMore_details.dart';
+import 'package:book_app/features/BookMark/presentation/views/widgets/price_bookMarkButton.dart';
 import 'package:book_app/features/home/presentation/views/widgets/item.dart';
-import 'package:book_app/features/home/presentation/views/widgets/more_details.dart';
 import 'package:book_app/features/home/presentation/views/widgets/price_Rating_item.dart';
-import 'package:book_app/features/home/presentation/views/widgets/price_button.dart';
 import 'package:flutter/material.dart';
 
-class BooksDetailSection extends StatelessWidget {
-  const BooksDetailSection({super.key, required this.bookModel});
-  final BookModel bookModel;
+class BooksmarkDetailSection extends StatelessWidget {
+  const BooksmarkDetailSection({super.key, required this.bookMark});
+  final BookModelMarked bookMark;
 
   @override
   Widget build(BuildContext context) {
@@ -18,11 +18,11 @@ class BooksDetailSection extends StatelessWidget {
       children: [
         Padding(
           padding: EdgeInsets.symmetric(horizontal: width * .25),
-          child: Item(imageUrl: bookModel.volumeInfo!.imageLinks!.thumbnail),
+          child: Item(imageUrl: bookMark.image),
         ),
         const SizedBox(height: 20),
         Text(
-          bookModel.volumeInfo!.title ?? 'None',
+          bookMark.title,
           style: Styles.textStyle30.copyWith(fontFamily: kGetSectraFont),
           textAlign: TextAlign.center,
           maxLines: 2,
@@ -32,7 +32,7 @@ class BooksDetailSection extends StatelessWidget {
         Opacity(
           opacity: .7,
           child: Text(
-            getAuthor(bookModel: bookModel),
+            bookMark.authors,
             textAlign: TextAlign.center,
             style: Styles.textStyle20,
           ),
@@ -41,15 +41,15 @@ class BooksDetailSection extends StatelessWidget {
 
         const SizedBox(height: 6),
         PriceRatingItem(
-          count: bookModel.volumeInfo!.ratingsCount ?? 0,
-          rating: bookModel.volumeInfo!.averageRating ?? 0,
+          count: bookMark.count,
+          rating: bookMark.rating,
           mainAxisAlignment: MainAxisAlignment.center,
           detail: true,
         ),
         const SizedBox(height: 30),
-        PriceButton(bookModel: bookModel),
+        PriceBookmarkbutton(bookMark: bookMark),
         const SizedBox(height: 30),
-        MoreDetails(bookModel: bookModel),
+        BookmarkmoreDetails(bookMark: bookMark),
         const SizedBox(height: 30),
         getAbout(),
       ],
@@ -57,9 +57,8 @@ class BooksDetailSection extends StatelessWidget {
   }
 
   Widget getAbout() {
-    if (bookModel.volumeInfo!.description == null ||
-        bookModel.volumeInfo!.description == 'See:') {
-      return const SizedBox(height: 100);
+    if (bookMark.about == 'None' || bookMark.about == 'See:') {
+      return const SizedBox(height: 1);
     } else {
       return Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -74,7 +73,7 @@ class BooksDetailSection extends StatelessWidget {
           ),
           const SizedBox(height: 6),
           Text(
-            bookModel.volumeInfo!.description!,
+            bookMark.about,
             style: Styles.textStyle14.copyWith(
               fontSize: 14,
               fontWeight: FontWeight.w200,
@@ -84,18 +83,5 @@ class BooksDetailSection extends StatelessWidget {
         ],
       );
     }
-  }
-}
-
-String getAuthor({required BookModel bookModel}) {
-  if (bookModel.volumeInfo!.authors != null &&
-      bookModel.volumeInfo!.authors!.isNotEmpty) {
-    if (bookModel.volumeInfo!.authors!.length > 1) {
-      return '${bookModel.volumeInfo!.authors![0]}\n${bookModel.volumeInfo!.authors![1]}';
-    } else {
-      return bookModel.volumeInfo!.authors![0];
-    }
-  } else {
-    return 'None';
   }
 }

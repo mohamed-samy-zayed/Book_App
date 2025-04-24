@@ -33,15 +33,21 @@ class SearchItem extends StatelessWidget {
                     borderRadius: const BorderRadius.all(Radius.circular(10)),
                     child: 
                   bookModel.volumeInfo!.imageLinks?.thumbnail == null
-                      ?  SizedBox(
-                        child: Center(
-                                child: Text(
-                                  'Not Found !',
-                                  style: Styles.textStyle14.copyWith(
-                                      color: Colors.black, fontSize: 10),
-                                ),
-                              ),
-                      )
+                      ? Container(
+                  decoration: BoxDecoration(
+                    borderRadius: const BorderRadius.all(Radius.circular(10)),
+                    color: kContainerColor,
+                  ),
+                  child: Center(
+                    child: Text(
+                      'Not Found !',
+                      style: Styles.textStyle14.copyWith(
+                        
+                        fontSize: 10,
+                      ),
+                    ),
+                  ),
+                )
                       :
                       CachedNetworkImage(
                           imageUrl: bookModel.volumeInfo!.imageLinks!.thumbnail!,

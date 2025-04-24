@@ -1,3 +1,4 @@
+import 'package:book_app/constatnts.dart';
 import 'package:book_app/core/utils/styles.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
@@ -14,12 +15,16 @@ class Item extends StatelessWidget {
         borderRadius: const BorderRadius.all(Radius.circular(10)),
         child:
             imageUrl == null
-                ? SizedBox(
+                ? Container(
+                  decoration: BoxDecoration(
+                    borderRadius: const BorderRadius.all(Radius.circular(10)),
+                    color: kContainerColor,
+                  ),
                   child: Center(
                     child: Text(
                       'Not Found !',
                       style: Styles.textStyle14.copyWith(
-                        color: Colors.black,
+                        
                         fontSize: 10,
                       ),
                     ),

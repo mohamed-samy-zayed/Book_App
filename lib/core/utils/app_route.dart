@@ -1,4 +1,6 @@
 import 'package:book_app/core/utils/service_locator.dart';
+import 'package:book_app/features/BookMark/data/model/bookModel_marked.dart';
+import 'package:book_app/features/BookMark/presentation/views/BookMarkDetails_view.dart';
 import 'package:book_app/features/BookMark/presentation/views/BookMark_view.dart';
 import 'package:book_app/features/home/data/models/book_model/book_model.dart';
 import 'package:book_app/features/home/data/repos/home_repo_imple.dart';
@@ -15,6 +17,7 @@ abstract class AppRoute {
   static String kDetailPath = '/DetailsView';
   static String kSearchPath = '/SearchView';
     static String kBookMarkPath = '/BookmarkView';
+  static String kBookMarkDetailPath = '/BookMarkDetailsView';
 
   static final router = GoRouter(routes: [
     GoRoute(
@@ -46,6 +49,13 @@ return BlocProvider(
     GoRoute(
       path: kBookMarkPath,
       builder: (context, state) => const BookmarkView(),
+    ),
+     GoRoute(
+      path: kBookMarkDetailPath,
+      builder: (context, state) {
+        final bookMark = state.extra as BookModelMarked ;
+        return  BookMarkDetailsView(bookMark:bookMark);
+      }
     )
   ]);
 }

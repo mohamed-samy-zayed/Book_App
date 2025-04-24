@@ -1,14 +1,14 @@
-
 import 'package:book_app/core/utils/styles.dart';
 import 'package:flutter/material.dart';
 
 class ItemMoreDetails extends StatelessWidget {
   const ItemMoreDetails({
     super.key,
-     required this.title, required this.subTitle,
+    required this.title,
+    required this.subTitle,
   });
 
-  final String title,subTitle;
+  final String title, subTitle;
 
   @override
   Widget build(BuildContext context) {
@@ -27,15 +27,21 @@ class ItemMoreDetails extends StatelessWidget {
             ),
           ),
         ),
-    
+
         const SizedBox(height: 8),
-        Text(
-          subTitle,
-          textAlign: TextAlign.center,
-          style: Styles.textStyle18.copyWith(
-            color: Colors.white,
-            fontSize: 17,
-            fontWeight: FontWeight.w600,
+        SizedBox(
+          width: 110,
+          height: 30,
+          child: Text(
+            subTitle,
+            textAlign: TextAlign.center,
+            maxLines: 1,
+            overflow: TextOverflow.ellipsis,
+            style: Styles.textStyle18.copyWith(
+              color: Colors.white,
+              fontSize: 17,
+              fontWeight: FontWeight.w600,
+            ),
           ),
         ),
       ],

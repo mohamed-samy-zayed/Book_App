@@ -50,6 +50,12 @@ class _CustomDeatailsappbarState extends State<CustomDeatailsappbar> {
                       image: widget.bookModel.volumeInfo!.imageLinks!.thumbnail ??
                           'Not Found!',
                       title: widget.bookModel.volumeInfo!.title ?? 'None',
+                      date: widget.bookModel.volumeInfo!.publishedDate ?? 'None',
+                      genre: getGenre(),
+                      language: widget.bookModel.volumeInfo!.language ?? 'None',
+                      link: widget.bookModel.volumeInfo!.previewLink ?? 'None',
+                      pages: widget.bookModel.volumeInfo!.pageCount ?? 0,
+                      publisher: widget.bookModel.volumeInfo!.publisher ?? 'None',
                       authors: getAuthor(bookModel: widget.bookModel),
                       category:
                           widget.bookModel.volumeInfo!.categories?[0] ?? 'None',
@@ -92,7 +98,7 @@ class _CustomDeatailsappbarState extends State<CustomDeatailsappbar> {
               if (state is AddBookMarkedRemove) {
                  customSnackBar(
                 context,
-                message: 'Book remove to your BookMarks',
+                message: 'Book remove from your BookMarks',
                 icon: Icons.bookmark_remove_rounded,
                );
               }
@@ -110,6 +116,19 @@ class _CustomDeatailsappbarState extends State<CustomDeatailsappbar> {
         ],
       );
   }
+
+
+   String getGenre() {
+  if (widget.bookModel.volumeInfo!.categories != null &&
+      widget.bookModel.volumeInfo!.categories!.isNotEmpty) {
+    if (widget.bookModel.volumeInfo!.categories!.length > 1) {
+      return '${widget.bookModel.volumeInfo!.categories![0]},${widget.bookModel.volumeInfo!.categories![1]}';
+    } else {
+      return widget.bookModel.volumeInfo!.categories![0];
+    }
+  } else {
+    return 'None';
+  }}
 
  
    

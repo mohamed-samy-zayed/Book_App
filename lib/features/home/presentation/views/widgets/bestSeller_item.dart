@@ -10,7 +10,8 @@ import 'package:go_router/go_router.dart';
 class BestSellerItem extends StatelessWidget {
   const BestSellerItem({
     super.key,
-    required this.bookModel, required this.index,
+    required this.bookModel,
+    required this.index,
   });
   final BookModel bookModel;
   final int index;
@@ -18,7 +19,7 @@ class BestSellerItem extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        GoRouter.of(context).push(AppRoute.kDetailPath, extra:bookModel );
+        GoRouter.of(context).push(AppRoute.kDetailPath, extra: bookModel);
       },
       child: SizedBox(
         height: MediaQuery.of(context).size.height * .16,
@@ -28,36 +29,46 @@ class BestSellerItem extends StatelessWidget {
               aspectRatio: 2.5 / 4,
               child: ClipRRect(
                 borderRadius: const BorderRadius.all(Radius.circular(10)),
-                child: bookModel.volumeInfo!.imageLinks?.thumbnail == null
-                      ?  SizedBox(
-                        child: Center(
+                child:
+                    bookModel.volumeInfo!.imageLinks?.thumbnail == null
+                        ? Container(
+                          decoration: BoxDecoration(
+                            borderRadius: const BorderRadius.all(
+                              Radius.circular(10),
+                            ),
+                            color: kContainerColor,
+                          ),
+                          child: Center(
+                            child: Text(
+                              'Not Found !',
+                              style: Styles.textStyle14.copyWith(fontSize: 10),
+                            ),
+                          ),
+                        )
+                        : CachedNetworkImage(
+                          imageUrl:
+                              bookModel.volumeInfo!.imageLinks!.thumbnail!,
+                          fit: BoxFit.cover,
+                          errorWidget:
+                              (context, url, error) => Center(
                                 child: Text(
                                   'Not Found !',
                                   style: Styles.textStyle14.copyWith(
-                                      color: Colors.black, fontSize: 10),
+                                    color: Colors.black,
+                                    fontSize: 10,
+                                  ),
                                 ),
                               ),
-                      )
-                      :
-                CachedNetworkImage(
-                    imageUrl: bookModel.volumeInfo!.imageLinks!.thumbnail!,
-                    fit: BoxFit.cover,
-                    errorWidget: (context, url, error) => Center(
-                            child: Text(
-                          'Not Found !',
-                          style: Styles.textStyle14
-                              .copyWith(color: Colors.black, fontSize: 10),
-                        )),
-                    placeholder: (context, url) => const Center(
-                          child: CircularProgressIndicator(
-                            color: Colors.grey,
-                          ),
-                        )),
+                          placeholder:
+                              (context, url) => const Center(
+                                child: CircularProgressIndicator(
+                                  color: Colors.grey,
+                                ),
+                              ),
+                        ),
               ),
             ),
-            const SizedBox(
-              width: 30,
-            ),
+            const SizedBox(width: 30),
             Expanded(
               child: Column(
                 mainAxisSize: MainAxisSize.min,
@@ -75,15 +86,14 @@ class BestSellerItem extends StatelessWidget {
                       overflow: TextOverflow.ellipsis,
                     ),
                   ),
-                  const SizedBox(
-                    height: 3,
+                  const SizedBox(height: 3),
+                  Text(
+                    getAuthor(bookModel: bookModel),
+                    style: Styles.textStyle14.copyWith(
+                      color: const Color(0xff707070),
+                    ),
                   ),
-                  Text(getAuthor(bookModel: bookModel),
-                      style: Styles.textStyle14
-                          .copyWith(color: const Color(0xff707070))),
-                  const SizedBox(
-                    height: 5,
-                  ),
+                  const SizedBox(height: 5),
                   SizedBox(
                     width: MediaQuery.of(context).size.width * .5,
                     child: Text(
@@ -93,21 +103,19 @@ class BestSellerItem extends StatelessWidget {
                       overflow: TextOverflow.ellipsis,
                     ),
                   ),
-                  const SizedBox(
-                    height: 5,
-                  ),
+                  const SizedBox(height: 5),
                   SizedBox(
                     width: MediaQuery.of(context).size.width * .5,
                     child: Row(
                       children: [
-                        Text('Free \$',
-                            style: Styles.textStyle20.copyWith(
-                              color: Colors.green,
-                              fontSize: 18,
-                            )),
-                        const Spacer(
-                          flex: 1,
+                        Text(
+                          'Free \$',
+                          style: Styles.textStyle20.copyWith(
+                            color: Colors.green,
+                            fontSize: 18,
+                          ),
                         ),
+                        const Spacer(flex: 1),
                         PriceRatingItem(
                           count: bookModel.volumeInfo!.ratingsCount ?? 0,
                           rating: bookModel.volumeInfo!.averageRating ?? 0,
@@ -115,10 +123,10 @@ class BestSellerItem extends StatelessWidget {
                         ),
                       ],
                     ),
-                  )
+                  ),
                 ],
               ),
-            )
+            ),
           ],
         ),
       ),
